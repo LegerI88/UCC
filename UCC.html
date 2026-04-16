@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les Unités Commerciales — PFMP Groupe Casino</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu: #1a3a5c;
+    --bleu-mid: #2563a8;
+    --bleu-light: #e8f0fb;
+    --orange: #d4600a;
+    --orange-light: #fff3e8;
+    --vert: #166534;
+    --vert-light: #e8f5ee;
+    --violet: #6d28d9;
+    --violet-light: #f3eeff;
+    --teal: #0d6e5e;
+    --teal-light: #e6f7f4;
+    --rouge: #991b1b;
+    --gris: #f8f8f6;
+    --gris-mid: #e5e5e0;
+    --noir: #1a1a1a;
+    --corrige: #15803d;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: #f5f4f0;
+    color: var(--noir);
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding-left: 88px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; font-size: 11.5px; padding-left: 0; }
+    .page { box-shadow: none; margin: 0; padding: 16mm 18mm; border-radius: 0; page-break-after: always; }
+    .page:last-child { page-break-after: avoid; }
+    .no-print { display: none; }
+    .mission-band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .ressource-box, .activite-band, .info-table td, .relier-table td, .synthese-table td, .motles-table td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    input[type="text"], textarea { border-bottom: 1px solid #999 !important; background: transparent !important; }
+    .checkbox-cell input { display: inline; }
+  }
+
+  /* ── SIDE NAV ── */
+  .side-nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: 88px;
+    height: 100vh;
+    background: var(--bleu);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 0 18px;
+    gap: 4px;
+    z-index: 200;
+    box-shadow: 3px 0 18px rgba(0,0,0,.18);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    color: #FFD700;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: .5px;
+  }
+  .nav-logo span {
+    font-family: 'Sora', sans-serif;
+    font-size: 9px;
+    color: rgba(255,255,255,.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+  .nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 6px;
+    width: 76px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .18s;
+    border: none;
+    background: transparent;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,.13); }
+  .nav-btn.active { background: rgba(255,255,255,.2); }
+  .nav-icon { font-size: 18px; line-height: 1; }
+  .nav-label {
+    font-family: 'Sora', sans-serif;
+    font-size: 9.5px;
+    color: rgba(255,255,255,.85);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: .2px;
+  }
+  .nav-sep {
+    width: 50px;
+    height: 1px;
+    background: rgba(255,255,255,.2);
+    margin: 6px 0;
+  }
+  .nav-pdf-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 6px;
+    width: 76px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1.5px solid rgba(255,255,255,.35);
+    background: rgba(255,255,255,.08);
+    transition: background .18s, border-color .18s;
+    margin-top: auto;
+  }
+  .nav-pdf-btn:hover { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.6); }
+  .nav-pdf-btn .nav-label { color: #FFD700; font-size: 9px; }
+  .nav-pdf-btn .nav-icon { font-size: 16px; }
+
+  .page {
+    background: white;
+    max-width: 820px;
+    margin: 24px auto;
+    padding: 28px 36px;
+    border-radius: 12px;
+    box-shadow: 0 2px 24px rgba(0,0,0,.09);
+  }
+
+  /* ── PAGE DE GARDE ── */
+  .garde-header {
+    background: linear-gradient(135deg, var(--bleu) 0%, #2563a8 100%);
+    border-radius: 10px;
+    padding: 28px 32px;
+    color: white;
+    margin-bottom: 18px;
+  }
+  .garde-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    margin-bottom: 4px;
+  }
+  .garde-header .sous-titre {
+    font-size: 13px;
+    opacity: .75;
+    font-style: italic;
+  }
+
+  .info-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 6px;
+  }
+  .info-table tr:nth-child(even) td:first-child { background: #dce8f7; }
+  .info-table tr:nth-child(odd) td:first-child { background: var(--bleu-light); }
+  .info-table td {
+    padding: 7px 12px; border: 1px solid #c5d6ed; font-size: 12.5px; vertical-align: top;
+  }
+  .info-table td:first-child {
+    font-weight: 700; color: var(--bleu); width: 180px;
+  }
+
+  /* ── MISSION BAND ── */
+  .mission-band {
+    background: var(--bleu);
+    border-radius: 8px;
+    padding: 13px 20px;
+    color: white;
+    margin: 20px 0 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .mission-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 11px;
+    background: #FFD700;
+    color: var(--bleu);
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .mission-titre {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .2px;
+  }
+
+  /* ── RESSOURCE BOX ── */
+  .ressource-box {
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 12px 0;
+  }
+  .ressource-box .rb-header {
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 12.5px;
+    color: white;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .rb-bleu .rb-header { background: var(--bleu); }
+  .rb-vert .rb-header { background: var(--vert); }
+  .rb-orange .rb-header { background: var(--orange); }
+  .rb-violet .rb-header { background: var(--violet); }
+  .rb-teal .rb-header { background: var(--teal); }
+
+  .ressource-box .rb-body {
+    padding: 12px 16px;
+    font-size: 12px;
+    line-height: 1.75;
+  }
+  .rb-bleu .rb-body { background: var(--bleu-light); }
+  .rb-vert .rb-body { background: var(--vert-light); }
+  .rb-orange .rb-body { background: var(--orange-light); }
+  .rb-violet .rb-body { background: var(--violet-light); }
+  .rb-teal .rb-body { background: var(--teal-light); }
+
+  .rb-body p { margin-bottom: 3px; }
+  .rb-body p.indent { padding-left: 18px; color: #444; }
+
+  /* ── ACTIVITE BAND ── */
+  .activite-band {
+    border-radius: 7px;
+    padding: 10px 18px;
+    color: white;
+    font-weight: 700;
+    font-size: 13.5px;
+    margin: 16px 0 10px;
+  }
+  .act-orange { background: var(--orange); }
+  .act-violet { background: var(--violet); }
+  .act-teal { background: var(--teal); }
+
+  /* ── CONSIGNE ── */
+  .consigne {
+    font-style: italic;
+    color: #555;
+    font-size: 12px;
+    margin: 6px 0 10px;
+  }
+  .consigne-label {
+    font-weight: 700;
+    color: var(--noir);
+    font-style: normal;
+    font-size: 13px;
+    margin: 12px 0 5px;
+  }
+
+  /* ── RELIER TABLE ── */
+  .relier-table {
+    width: 100%; border-collapse: collapse; margin: 8px 0;
+  }
+  .relier-table td {
+    padding: 7px 10px; border: 1px solid #ddd; font-size: 12px; vertical-align: middle;
+  }
+  .relier-table tr:nth-child(odd) td:first-child { background: #ebf4fb; }
+  .relier-table tr:nth-child(even) td:first-child { background: #f5f9fe; }
+  .relier-table tr:nth-child(odd) td:last-child { background: #edf7f0; }
+  .relier-table tr:nth-child(even) td:last-child { background: #f5fbf7; }
+  .relier-table td.fleche { text-align: center; color: #aaa; font-size: 11px; width: 80px; }
+  .relier-select {
+    border: none; border-bottom: 2px solid var(--bleu); background: transparent;
+    font-family: 'Sora', sans-serif; font-size: 11.5px; color: var(--bleu);
+    padding: 2px 4px; width: 100%; cursor: pointer; outline: none;
+  }
+
+  /* ── LIGNES REPONSE ── */
+  .ligne-reponse {
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px solid #bbb;
+    background: transparent;
+    font-family: 'Sora', sans-serif;
+    font-size: 12.5px;
+    padding: 5px 4px;
+    margin-bottom: 7px;
+    display: block;
+    outline: none;
+    color: var(--noir);
+    resize: none;
+  }
+  .ligne-reponse:focus { border-bottom-color: var(--bleu); }
+
+  /* ── SYNTHESE TABLE ── */
+  .synthese-table {
+    width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 11.5px;
+  }
+  .synthese-table th {
+    background: var(--bleu); color: white; padding: 8px 10px;
+    text-align: center; font-size: 12px; font-weight: 700; border: 1px solid #a0b8d4;
+  }
+  .synthese-table td {
+    padding: 7px 10px; border: 1px solid #cdd9e5; vertical-align: top;
+  }
+  .synthese-table tr:nth-child(odd) td { background: var(--vert-light); }
+  .synthese-table tr:nth-child(even) td { background: white; }
+  .synthese-table .fill {
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px solid #bbb;
+    background: transparent;
+    font-family: 'Sora', sans-serif;
+    font-size: 11px;
+    padding: 3px 2px;
+    outline: none;
+    color: var(--noir);
+  }
+
+  /* ── VRAI FAUX TABLE ── */
+  .vf-table {
+    width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px;
+  }
+  .vf-table th {
+    padding: 8px 10px; text-align: center; font-size: 12px; border: 1px solid #bbb;
+    color: white;
+  }
+  .vf-table th:first-child { background: var(--bleu); text-align: left; }
+  .vf-table th.th-vrai { background: var(--vert); width: 70px; }
+  .vf-table th.th-faux { background: var(--rouge); width: 70px; }
+  .vf-table td {
+    padding: 7px 10px; border: 1px solid #ddd; vertical-align: middle;
+  }
+  .vf-table tr:nth-child(odd) td:first-child { background: #f5f5f3; }
+  .vf-table td.checkbox-cell { text-align: center; }
+  .vf-table td.checkbox-cell input[type="radio"] {
+    width: 16px; height: 16px; cursor: pointer; accent-color: var(--vert);
+  }
+
+  /* ── CLASSEMENT TABLE ── */
+  .classement-table {
+    width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 11.5px;
+  }
+  .classement-table th {
+    padding: 8px 10px; text-align: center; font-weight: 700; color: white; border: 1px solid #aaa;
+  }
+  .th-virtuel { background: var(--bleu); }
+  .th-phygital { background: var(--violet); }
+  .th-physique { background: var(--vert); }
+  .classement-table td {
+    padding: 7px 10px; border: 1px solid #ddd; vertical-align: top; min-height: 60px; height: 70px;
+  }
+  .classement-table td:nth-child(1) { background: var(--bleu-light); }
+  .classement-table td:nth-child(2) { background: var(--violet-light); }
+  .classement-table td:nth-child(3) { background: var(--vert-light); }
+  .classement-table textarea {
+    width: 100%; border: none; background: transparent; font-family: 'Sora', sans-serif;
+    font-size: 11px; resize: none; height: 55px; outline: none; color: var(--noir);
+  }
+
+  /* ── MOTLES TABLE ── */
+  .motles-table {
+    width: 100%; border-collapse: collapse; font-size: 12px;
+  }
+  .motles-table th {
+    background: var(--teal); color: white; padding: 8px 14px; border: 1px solid #0a5a4c; font-size: 12.5px;
+  }
+  .motles-table td {
+    padding: 8px 14px; border: 1px solid #b2d8d0; vertical-align: middle;
+  }
+  .motles-table tr:nth-child(odd) td:first-child { background: #d1f2eb; }
+  .motles-table tr:nth-child(even) td:first-child { background: white; }
+  .motles-table td:first-child { font-weight: 700; color: var(--teal); width: 200px; }
+  .motles-table td:last-child { font-size: 11.5px; color: #222; line-height: 1.6; }
+  .motles-table tr:nth-child(odd) td:last-child { background: #f0faf8; }
+  .motles-table tr:nth-child(even) td:last-child { background: white; }
+
+  /* ── SYNTHESE PHRASES ── */
+  .phrase-fill {
+    display: inline-block;
+    border-bottom: 2px solid var(--bleu);
+    min-width: 160px;
+    padding: 1px 4px;
+    font-family: 'Sora', sans-serif;
+    font-size: 12.5px;
+    outline: none;
+    color: var(--bleu);
+    background: transparent;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    border-radius: 8px;
+    padding: 14px 22px;
+    color: white;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .sh-dark { background: #2c3e50; }
+  .sh-teal { background: var(--teal); }
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #FFD700;
+    margin-bottom: 3px;
+  }
+  .section-header .sh-sub {
+    font-size: 12px; color: rgba(255,255,255,.7); font-style: italic;
+  }
+
+  /* ── QCM OPTIONS ── */
+  .qcm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 10px 0;
+  }
+  .qcm-option {
+    border: 2px solid #ddd; border-radius: 8px; padding: 12px;
+    cursor: pointer; transition: border-color .2s, background .2s;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .qcm-option:hover { border-color: var(--bleu); background: var(--bleu-light); }
+  .qcm-option input[type="radio"] { margin-top: 2px; accent-color: var(--bleu); }
+  .qcm-option label { font-size: 12px; cursor: pointer; line-height: 1.5; }
+  .qcm-letter {
+    font-weight: 800; font-size: 16px; color: var(--bleu); min-width: 20px;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    padding: 10px 0 0;
+    margin-top: 16px;
+    border-top: 1px solid #e5e5e0;
+    font-style: italic;
+  }
+
+  .emoji { margin-right: 5px; }
+  .spacer { height: 10px; }
+  .spacer-sm { height: 6px; }
+
+  /* chips pour solutions à classer */
+  .chips-container {
+    display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 12px;
+    padding: 10px 14px; background: var(--gris); border-radius: 8px; border: 1px dashed #ccc;
+  }
+  .chip {
+    background: white; border: 1.5px solid #bbb; border-radius: 20px;
+    padding: 3px 10px; font-size: 11px; color: #333; font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<nav class="side-nav no-print">
+  <div class="nav-logo">UC<br><span>Casino</span></div>
+  <a class="nav-btn" onclick="scrollToPage('page-garde')"><span class="nav-icon">🏠</span><span class="nav-label">Présentation</span></a>
+  <a class="nav-btn" onclick="scrollToPage('page-m1')"><span class="nav-icon">🏪</span><span class="nav-label">Mission 1</span></a>
+  <a class="nav-btn" onclick="scrollToPage('page-m2')"><span class="nav-icon">💻</span><span class="nav-label">Mission 2</span></a>
+  <a class="nav-btn" onclick="scrollToPage('page-m3')"><span class="nav-icon">🔀</span><span class="nav-label">Mission 3</span></a>
+  <div class="nav-sep"></div>
+  <button class="nav-pdf-btn" onclick="window.print()"><span class="nav-icon">⬇️</span><span class="nav-label">Enregistrer<br>en PDF</span></button>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 1 — PAGE DE GARDE + RESSOURCES + MISSION 1
+     ══════════════════════════════════════════════════════ -->
+<div class="page" id="page-garde">
+
+  <!-- En-tête document -->
+  <div class="garde-header">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:11px; opacity:.6; text-transform:uppercase; letter-spacing:2px; margin-bottom:6px;">LEGER Isabelle — Éco-Gestion</div>
+        <h1>Les Unités Commerciales</h1>
+        <div class="sous-titre">Activités en PFMP — Groupe Casino &nbsp;|&nbsp; 2de Bac Pro</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fiche élève -->
+  <table class="info-table">
+    <tr><td>Contexte</td><td>Vous effectuez votre PFMP en tant qu'employé(e) commercial(e) au sein du groupe Casino.</td></tr>
+    <tr><td>Enseignes visitées</td><td>Franprix et Casino (UC physiques) — Cdiscount (UC virtuelle)</td></tr>
+    <tr><td>Classe</td><td>2de Bac Pro Commerce / Vente / Accueil</td></tr>
+    <tr><td>Durée estimée</td><td>3 à 4 heures</td></tr>
+    <tr><td>Compétences visées</td><td>Identifier et présenter une unité commerciale, ses caractéristiques et son environnement numérique.</td></tr>
+  </table>
+
+  <div class="spacer"></div>
+
+  <!-- Ressources générales -->
+  <div style="font-size:13px; font-weight:700; color:var(--bleu); margin:14px 0 6px; border-left:4px solid var(--bleu); padding-left:10px;">
+    Le Groupe Casino — Présentation rapide
+  </div>
+  <div class="ressource-box rb-bleu">
+    <div class="rb-header"><span>📚</span> À savoir sur le Groupe Casino</div>
+    <div class="rb-body">
+      <p>Le Groupe Casino est l'un des leaders de la distribution en France.</p>
+      <p>Il regroupe plusieurs enseignes aux formats variés : hypermarchés, supermarchés, supérettes, hard-discount, e-commerce.</p>
+      <p>Principales enseignes : Casino Hypermarché, Franprix, Monoprix, Cdiscount, Spar…</p>
+      <p>Cdiscount est la plateforme e-commerce du groupe : c'est un « pure player » (vente 100 % en ligne).</p>
+      <p>Chiffre d'affaires France : environ 12 milliards d'euros <em>(source : Groupe Casino, rapport annuel 2022)</em>.</p>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- MISSION 1 -->
+  <div class="mission-band">
+    <span class="mission-num">Mission 1</span>
+    <span class="mission-titre">Explorer l'unité commerciale physique</span>
+  </div>
+
+  <!-- Ressources Mission 1 -->
+  <div class="ressource-box rb-bleu">
+    <div class="rb-header"><span>📚</span> Définitions à connaître</div>
+    <div class="rb-body">
+      <p><strong>🔵 Unité commerciale (UC) :</strong> Lieu physique ou virtuel qui permet à un client d'accéder à une offre de produits ou de services.</p>
+      <p><strong>🔵 UC physique :</strong> L'UC existe dans un lieu géographique précis. Le client se déplace pour acheter.</p>
+      <p class="indent">Exemples : supermarché, boutique, pharmacie, grande surface spécialisée (GSS).</p>
+      <p><strong>🔵 UC virtuelle :</strong> L'UC n'existe que sur internet. Le client commande en ligne, la livraison est effectuée à domicile ou en point relais.</p>
+      <p class="indent">Exemples : Cdiscount, Amazon, Zalando, FNAC.com.</p>
+      <p><strong>🔵 UC phygitale :</strong> Combinaison d'une UC physique et d'outils digitaux pour améliorer l'expérience client.</p>
+      <p class="indent">Exemples : bornes interactives, click &amp; collect, application mobile, tablettes vendeurs.</p>
+      <p><strong>🔵 Supermarché :</strong> Surface de vente entre 400 et 2 500 m², alimentation générale.</p>
+      <p><strong>🔵 Hypermarché :</strong> Surface de vente supérieure à 2 500 m², alimentaire + non-alimentaire.</p>
+      <p><strong>🔵 Hard-discount :</strong> Magasin proposant des produits à prix très bas, offre réduite, peu de services.</p>
+      <p><strong>🔵 Pure player :</strong> Entreprise dont l'activité commerciale est exclusivement réalisée sur internet.</p>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- Activité 1 -->
+  <div class="activite-band act-orange">Activité 1 — Je découvre les enseignes du groupe Casino</div>
+  <p class="consigne">Consigne : Reliez chaque enseigne du groupe Casino au type d'unité commerciale correspondant en sélectionnant la bonne réponse dans la liste déroulante.</p>
+
+  <table class="relier-table">
+    <thead>
+      <tr>
+        <td style="background:var(--bleu);color:white;font-weight:700;font-size:12px;width:200px;">Enseigne</td>
+        <td class="fleche" style="background:var(--bleu);color:white;font-weight:700;font-size:12px;"></td>
+        <td style="background:var(--bleu);color:white;font-weight:700;font-size:12px;">Type d'unité commerciale</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Franprix</strong></td>
+        <td class="fleche">——</td>
+        <td>
+          <select class="relier-select">
+            <option value="">Choisir...</option>
+            <option>A. Hypermarché (UC physique)</option>
+            <option>B. Supermarché (UC physique)</option>
+            <option>C. Pure player / UC virtuelle</option>
+            <option>D. Supermarché de proximité (UC physique)</option>
+            <option>E. Hard-discount (UC physique)</option>
+            <option>F. Commerce de proximité (UC physique)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Casino Hypermarché</strong></td>
+        <td class="fleche">——</td>
+        <td>
+          <select class="relier-select">
+            <option value="">Choisir...</option>
+            <option>A. Hypermarché (UC physique)</option>
+            <option>B. Supermarché (UC physique)</option>
+            <option>C. Pure player / UC virtuelle</option>
+            <option>D. Supermarché de proximité (UC physique)</option>
+            <option>E. Hard-discount (UC physique)</option>
+            <option>F. Commerce de proximité (UC physique)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Cdiscount</strong></td>
+        <td class="fleche">——</td>
+        <td>
+          <select class="relier-select">
+            <option value="">Choisir...</option>
+            <option>A. Hypermarché (UC physique)</option>
+            <option>B. Supermarché (UC physique)</option>
+            <option>C. Pure player / UC virtuelle</option>
+            <option>D. Supermarché de proximité (UC physique)</option>
+            <option>E. Hard-discount (UC physique)</option>
+            <option>F. Commerce de proximité (UC physique)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Monoprix</strong></td>
+        <td class="fleche">——</td>
+        <td>
+          <select class="relier-select">
+            <option value="">Choisir...</option>
+            <option>A. Hypermarché (UC physique)</option>
+            <option>B. Supermarché (UC physique)</option>
+            <option>C. Pure player / UC virtuelle</option>
+            <option>D. Supermarché de proximité (UC physique)</option>
+            <option>E. Hard-discount (UC physique)</option>
+            <option>F. Commerce de proximité (UC physique)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Spar</strong></td>
+        <td class="fleche">——</td>
+        <td>
+          <select class="relier-select">
+            <option value="">Choisir...</option>
+            <option>A. Hypermarché (UC physique)</option>
+            <option>B. Supermarché (UC physique)</option>
+            <option>C. Pure player / UC virtuelle</option>
+            <option>D. Supermarché de proximité (UC physique)</option>
+            <option>E. Hard-discount (UC physique)</option>
+            <option>F. Commerce de proximité (UC physique)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Leader Price</strong> <span style="font-size:11px;color:#888;">(ancienne enseigne)</span></td>
+        <td class="fleche">——</td>
+        <td>
+          <select class="relier-select">
+            <option value="">Choisir...</option>
+            <option>A. Hypermarché (UC physique)</option>
+            <option>B. Supermarché (UC physique)</option>
+            <option>C. Pure player / UC virtuelle</option>
+            <option>D. Supermarché de proximité (UC physique)</option>
+            <option>E. Hard-discount (UC physique)</option>
+            <option>F. Commerce de proximité (UC physique)</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="spacer-sm"></div>
+  <p class="consigne-label">➤ Parmi les enseignes listées, laquelle n'est PAS une unité commerciale physique ? Justifiez.</p>
+  <input type="text" class="ligne-reponse" placeholder="Votre réponse…">
+  <input type="text" class="ligne-reponse" placeholder="">
+  <input type="text" class="ligne-reponse" placeholder="">
+
+  <div class="doc-footer">LEGER Isabelle — Les Unités Commerciales — 2de Bac Pro &nbsp;|&nbsp; Page 1</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 2 — ACTIVITÉS 2 & 3 MISSION 1
+     ══════════════════════════════════════════════════════ -->
+<div class="page" id="page-m1">
+
+  <!-- Activité 2 -->
+  <div class="activite-band act-orange">Activité 2 — Reconnaître les facteurs d'ambiance dans une UC physique</div>
+
+  <div class="ressource-box rb-vert">
+    <div class="rb-header"><span>📚</span> Les facteurs d'ambiance d'une UC physique</div>
+    <div class="rb-body">
+      <p>Les facteurs d'ambiance regroupent tous les éléments sensoriels destinés à créer une atmosphère favorable à l'achat.</p>
+      <p><strong>🎵 Facteurs sonores :</strong> musique de fond, volume, rythme (musique lente = client reste plus longtemps).</p>
+      <p><strong>💡 Facteurs visuels :</strong> éclairage, couleurs, propreté, mise en scène des produits (merchandising), signalétique.</p>
+      <p><strong>👃 Facteurs olfactifs :</strong> parfums diffusés (boulangerie, café), odeurs des produits frais.</p>
+      <p><strong>🌡️ Facteurs thermiques :</strong> température du magasin (fraîcheur = confort, chaleur excessive = départ rapide).</p>
+      <p><strong>📐 Facteurs spatiaux :</strong> largeur des allées, agencement des rayons, balisage, flux de circulation.</p>
+      <p><strong>🎨 Théorie des couleurs :</strong> le rouge stimule l'achat impulsif, le bleu inspire confiance, le vert évoque le naturel.</p>
+    </div>
+  </div>
+
+  <p class="consigne">Consigne 1 : Lors de votre visite en magasin (Franprix ou Casino), complétez le tableau d'observation suivant.</p>
+
+  <table class="synthese-table">
+    <thead>
+      <tr>
+        <th style="width:160px;">Facteur d'ambiance</th>
+        <th>Ce que j'ai observé en magasin</th>
+        <th>Effet probable sur le client</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Musique / sons</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+      <tr>
+        <td><strong>Éclairage / couleurs</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+      <tr>
+        <td><strong>Odeurs</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+      <tr>
+        <td><strong>Température</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+      <tr>
+        <td><strong>Agencement / allées</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+      <tr>
+        <td><strong>Affichage / signalétique</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="spacer-sm"></div>
+  <p class="consigne-label">➤ Consigne 2 : Parmi les facteurs d'ambiance que vous avez observés, lequel vous semble le plus efficace pour inciter à l'achat ? Justifiez en 3 lignes.</p>
+  <input type="text" class="ligne-reponse" placeholder="Votre réponse…">
+  <input type="text" class="ligne-reponse" placeholder="">
+  <input type="text" class="ligne-reponse" placeholder="">
+  <input type="text" class="ligne-reponse" placeholder="">
+
+  <div class="spacer"></div>
+
+  <!-- Activité 3 -->
+  <div class="activite-band act-orange">Activité 3 — Découvrir de nouveaux concepts d'unités commerciales physiques</div>
+
+  <div class="ressource-box rb-vert">
+    <div class="rb-header"><span>📚</span> Nouveaux concepts d'UC physique</div>
+    <div class="rb-body">
+      <p><strong>🏪 Le magasin expérientiel :</strong> le lieu de vente devient un lieu de vie. On vient pour vivre une expérience (ateliers, bar, espace détente).</p>
+      <p class="indent">Exemple : Monoprix propose des corners épicerie fine, des espaces traiteur, une ambiance boutique.</p>
+      <p><strong>🤖 Le magasin autonome (cashierless) :</strong> pas de caisse, pas de caissier. Les achats sont débités automatiquement.</p>
+      <p class="indent">Exemple : Amazon Go (États-Unis), des pilotes en France.</p>
+      <p><strong>🛒 Le drive :</strong> le client commande en ligne et récupère ses courses en voiture sans entrer dans le magasin.</p>
+      <p class="indent">Exemples : Casino Drive, Leclerc Drive.</p>
+      <p><strong>📦 Le dark store :</strong> entrepôt urbain sans accès public, dédié à la préparation de commandes en ligne.</p>
+      <p class="indent">Exemple : dark stores de Franprix à Paris.</p>
+      <p><strong>♻️ Le commerce de proximité durable :</strong> magasins de vrac, produits locaux, emballages réutilisables.</p>
+      <p class="indent">Exemple : magasins Naturalia (enseigne du groupe Casino).</p>
+    </div>
+  </div>
+
+  <p class="consigne">Consigne 1 : Reliez chaque définition au concept correspondant.</p>
+
+  <table class="relier-table">
+    <thead>
+      <tr>
+        <td style="background:var(--vert);color:white;font-weight:700;font-size:12px;">Définition</td>
+        <td class="fleche" style="background:var(--vert);color:white;font-weight:700;font-size:12px;"></td>
+        <td style="background:var(--vert);color:white;font-weight:700;font-size:12px;">Concept</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Entrepôt urbain sans accueil public, livraison rapide</td>
+        <td class="fleche">——</td>
+        <td><select class="relier-select">
+          <option value="">Choisir...</option>
+          <option>A. Magasin expérientiel</option>
+          <option>B. Drive</option>
+          <option>C. Dark store</option>
+          <option>D. Magasin autonome (cashierless)</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>Retrait des courses commandées en ligne depuis sa voiture</td>
+        <td class="fleche">——</td>
+        <td><select class="relier-select">
+          <option value="">Choisir...</option>
+          <option>A. Magasin expérientiel</option>
+          <option>B. Drive</option>
+          <option>C. Dark store</option>
+          <option>D. Magasin autonome (cashierless)</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>Lieu de vente devenant un espace de vie et d'expériences</td>
+        <td class="fleche">——</td>
+        <td><select class="relier-select">
+          <option value="">Choisir...</option>
+          <option>A. Magasin expérientiel</option>
+          <option>B. Drive</option>
+          <option>C. Dark store</option>
+          <option>D. Magasin autonome (cashierless)</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>Paiement automatique, sans caisse ni caissier</td>
+        <td class="fleche">——</td>
+        <td><select class="relier-select">
+          <option value="">Choisir...</option>
+          <option>A. Magasin expérientiel</option>
+          <option>B. Drive</option>
+          <option>C. Dark store</option>
+          <option>D. Magasin autonome (cashierless)</option>
+        </select></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="consigne-label">➤ Consigne 2 : Selon vous, quel concept a le plus d'avenir pour les enseignes comme Franprix (commerce de proximité urbain) ? Justifiez.</p>
+  <input type="text" class="ligne-reponse" placeholder="Votre réponse…">
+  <input type="text" class="ligne-reponse" placeholder="">
+  <input type="text" class="ligne-reponse" placeholder="">
+  <input type="text" class="ligne-reponse" placeholder="">
+
+  <div class="doc-footer">LEGER Isabelle — Les Unités Commerciales — 2de Bac Pro &nbsp;|&nbsp; Page 2</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 3 — MISSION 2
+     ══════════════════════════════════════════════════════ -->
+<div class="page" id="page-m2">
+
+  <div class="mission-band">
+    <span class="mission-num">Mission 2</span>
+    <span class="mission-titre">Explorer l'unité commerciale virtuelle</span>
+  </div>
+
+  <div class="ressource-box rb-orange">
+    <div class="rb-header"><span>📚</span> Cdiscount — Présentation de l'UC virtuelle du groupe Casino</div>
+    <div class="rb-body">
+      <p>Cdiscount est le site de e-commerce du groupe Casino, fondé en 1998 à Bordeaux.</p>
+      <p>C'est l'un des 2 premiers sites marchands français (avec Amazon France) en termes de visites.</p>
+      <p>Il propose plus de 100 millions de références : high-tech, électroménager, mode, alimentation, jardinage…</p>
+      <p>Cdiscount propose la livraison à domicile, en point relais et dans des consignes automatiques.</p>
+      <p>Le site dispose d'une marketplace : des vendeurs tiers peuvent vendre leurs produits sur la plateforme.</p>
+      <p>Il n'existe pas de magasins Cdiscount : c'est un pure player (100 % en ligne).</p>
+      <p style="color:#777;font-size:11px;margin-top:4px;"><em>Source : Cdiscount.com, présentation institutionnelle, 2023.</em></p>
+    </div>
+  </div>
+
+  <div class="spacer-sm"></div>
+
+  <!-- Activité 1 -->
+  <div class="activite-band act-orange">Activité 1 — Présenter une unité commerciale virtuelle</div>
+  <p class="consigne">Consigne : À partir du document ressource ci-dessus et de vos observations, complétez la carte d'identité de Cdiscount.</p>
+
+  <table class="info-table">
+    <tr><td>Nom de l'enseigne</td><td><input type="text" class="fill" placeholder="…" style="width:100%;border:none;border-bottom:1.5px solid #bbb;background:transparent;font-family:'Sora',sans-serif;font-size:12px;padding:3px;outline:none;"></td></tr>
+    <tr><td>Groupe d'appartenance</td><td><input type="text" class="fill" placeholder="…" style="width:100%;border:none;border-bottom:1.5px solid #bbb;background:transparent;font-family:'Sora',sans-serif;font-size:12px;padding:3px;outline:none;"></td></tr>
+    <tr><td>Date de création</td><td><input type="text" class="fill" placeholder="…" style="width:100%;border:none;border-bottom:1.5px solid #bbb;background:transparent;font-family:'Sora',sans-serif;font-size:12px;padding:3px;outline:none;"></td></tr>
+    <tr><td>Type d'UC</td><td><input type="text" class="fill" placeholder="…" style="width:100%;border:none;border-bottom:1.5px solid #bbb;background:transparent;font-family:'Sora',sans-serif;font-size:12px;padding:3px;outline:none;"></td></tr>
+    <tr><td>Siège social</td><td><input type="text" class="fill" placeholder="…" style="width:100%;border:none;border-bottom:1.5px solid #bbb;background:transparent;font-family:'Sora',sans-serif;font-size:12px;padding:3px;outline:none;"></td></tr>
+    <tr><td>Gamme de produits</td><td><input type="text" class="fill" placeholder="…" style="width:100%;border:none;border-bottom:1.5px solid #bbb;background:transparent;font-family:'Sora',sans-serif;font-size:12px;padding:3px;outline:none;"></td></tr>
+    <tr><td>Modes de livraison</td><td><input type="text" class="fill" placeholder="…" style="width:100%;border:none;border-bottom:1.5px solid #bbb;background:transparent;font-family:'Sora',sans-serif;font-size:12px;padding:3px;outline:none;"></td></tr>
+    <tr><td>Particularité</td><td><input type="text" class="fill" placeholder="…" style="width:100%;border:none;border-bottom:1.5px solid #bbb;background:transparent;font-family:'Sora',sans-serif;font-size:12px;padding:3px;outline:none;"></td></tr>
+  </table>
+
+  <p class="consigne-label">➤ En quoi Cdiscount est-il différent d'un supermarché comme Franprix ? Citez au moins 3 différences.</p>
+  <input type="text" class="ligne-reponse" placeholder="Différence 1 :">
+  <input type="text" class="ligne-reponse" placeholder="Différence 2 :">
+  <input type="text" class="ligne-reponse" placeholder="Différence 3 :">
+  <input type="text" class="ligne-reponse" placeholder="">
+
+  <div class="spacer"></div>
+
+  <!-- Activité 2 -->
+  <div class="activite-band act-orange">Activité 2 — Identifier les avantages des pure players</div>
+
+  <div class="ressource-box rb-orange">
+    <div class="rb-header"><span>📚</span> Pure player : avantages et limites</div>
+    <div class="rb-body">
+      <p><strong>Avantages pour le consommateur :</strong></p>
+      <p class="indent">✅ Accessibilité 24h/24, 7j/7, depuis n'importe où.</p>
+      <p class="indent">✅ Offre très large (millions de références).</p>
+      <p class="indent">✅ Comparaison des prix facilitée. &nbsp; ✅ Avis clients disponibles en ligne.</p>
+      <p class="indent">✅ Livraison à domicile ou en point relais.</p>
+      <p><strong>Avantages pour l'entreprise :</strong></p>
+      <p class="indent">✅ Pas de loyers de magasins physiques. &nbsp; ✅ Clientèle nationale. &nbsp; ✅ Données clients très riches.</p>
+      <p><strong>Limites :</strong></p>
+      <p class="indent">❌ Le client ne peut pas toucher ou essayer le produit. &nbsp; ❌ Délai de livraison. &nbsp; ❌ Pas de conseil humain en temps réel.</p>
+    </div>
+  </div>
+
+  <p class="consigne">Consigne : Vrai ou Faux ? Cochez la bonne case.</p>
+
+  <table class="vf-table">
+    <thead>
+      <tr>
+        <th>Affirmation</th>
+        <th class="th-vrai">Vrai</th>
+        <th class="th-faux">Faux</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Un pure player possède au moins un magasin physique.</td>
+        <td class="checkbox-cell"><input type="radio" name="vf1" value="vrai"></td>
+        <td class="checkbox-cell"><input type="radio" name="vf1" value="faux"></td>
+      </tr>
+      <tr>
+        <td>Sur Cdiscount, il est possible de commander à 3h du matin.</td>
+        <td class="checkbox-cell"><input type="radio" name="vf2" value="vrai"></td>
+        <td class="checkbox-cell"><input type="radio" name="vf2" value="faux"></td>
+      </tr>
+      <tr>
+        <td>La zone de chalandise d'un pure player est limitée à une ville.</td>
+        <td class="checkbox-cell"><input type="radio" name="vf3" value="vrai"></td>
+        <td class="checkbox-cell"><input type="radio" name="vf3" value="faux"></td>
+      </tr>
+      <tr>
+        <td>Un pure player peut proposer des millions de références de produits.</td>
+        <td class="checkbox-cell"><input type="radio" name="vf4" value="vrai"></td>
+        <td class="checkbox-cell"><input type="radio" name="vf4" value="faux"></td>
+      </tr>
+      <tr>
+        <td>Le client d'un pure player ne peut pas lire les avis d'autres acheteurs.</td>
+        <td class="checkbox-cell"><input type="radio" name="vf5" value="vrai"></td>
+        <td class="checkbox-cell"><input type="radio" name="vf5" value="faux"></td>
+      </tr>
+      <tr>
+        <td>Un pure player n'a pas de loyer de magasin à payer.</td>
+        <td class="checkbox-cell"><input type="radio" name="vf6" value="vrai"></td>
+        <td class="checkbox-cell"><input type="radio" name="vf6" value="faux"></td>
+      </tr>
+      <tr>
+        <td>La marketplace de Cdiscount permet à des vendeurs tiers de proposer leurs produits.</td>
+        <td class="checkbox-cell"><input type="radio" name="vf7" value="vrai"></td>
+        <td class="checkbox-cell"><input type="radio" name="vf7" value="faux"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="consigne-label">➤ Pourquoi le groupe Casino a-t-il créé Cdiscount en plus de ses magasins physiques ? Répondez en 3 à 4 lignes.</p>
+  <input type="text" class="ligne-reponse" placeholder="Votre réponse…">
+  <input type="text" class="ligne-reponse" placeholder="">
+  <input type="text" class="ligne-reponse" placeholder="">
+  <input type="text" class="ligne-reponse" placeholder="">
+
+  <div class="doc-footer">LEGER Isabelle — Les Unités Commerciales — 2de Bac Pro &nbsp;|&nbsp; Page 3</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 4 — MISSION 3
+     ══════════════════════════════════════════════════════ -->
+<div class="page" id="page-m3">
+
+  <div class="mission-band">
+    <span class="mission-num">Mission 3</span>
+    <span class="mission-titre">Découvrir l'unité commerciale phygitale</span>
+  </div>
+
+  <div class="ressource-box rb-violet">
+    <div class="rb-header"><span>📚</span> Qu'est-ce que le phygital ?</div>
+    <div class="rb-body">
+      <p>Le mot « phygital » est une contraction de « physique » et « digital ».</p>
+      <p>Une UC phygitale est un magasin physique qui intègre des outils numériques pour enrichir l'expérience client.</p>
+      <p><strong>L'objectif :</strong> combiner les avantages du commerce physique (contact, conseil, expérience) et du numérique (rapidité, personnalisation, données).</p>
+      <p><strong>Exemples d'outils phygitaux :</strong> bornes interactives, QR codes, tablettes vendeurs, application mobile, click &amp; collect, miroir connecté, paiement sans contact, écrans dynamiques (digital signage).</p>
+      <p><strong>Exemple concret :</strong> Casino a équipé certains magasins de bornes de scan autonome (Scan &amp; Go) permettant au client de scanner ses produits avec son smartphone et de payer sans passer en caisse.</p>
+    </div>
+  </div>
+
+  <div class="spacer-sm"></div>
+
+  <!-- Activité 1 -->
+  <div class="activite-band act-violet">Activité 1 — Définir le contexte phygital</div>
+
+  <p class="consigne">Consigne 1 : Entourez (ou cochez) la bonne définition du terme « phygital ».</p>
+
+  <div class="qcm-grid">
+    <div class="qcm-option">
+      <input type="radio" name="qcm_phygital" id="qA">
+      <div>
+        <span class="qcm-letter">A</span>
+        <label for="qA">Un magasin qui vend uniquement des produits digitaux (téléphones, tablettes).</label>
+      </div>
+    </div>
+    <div class="qcm-option">
+      <input type="radio" name="qcm_phygital" id="qB">
+      <div>
+        <span class="qcm-letter">B</span>
+        <label for="qB">Un commerce qui combine présence physique et outils numériques pour enrichir l'expérience client.</label>
+      </div>
+    </div>
+    <div class="qcm-option">
+      <input type="radio" name="qcm_phygital" id="qC">
+      <div>
+        <span class="qcm-letter">C</span>
+        <label for="qC">Un site internet qui propose des produits alimentaires en livraison express.</label>
+      </div>
+    </div>
+  </div>
+
+  <p class="consigne-label">➤ Consigne 2 : Citez 3 exemples d'outils phygitaux que vous avez observés ou que vous connaissez.</p>
+  <input type="text" class="ligne-reponse" placeholder="Exemple 1 :">
+  <input type="text" class="ligne-reponse" placeholder="Exemple 2 :">
+  <input type="text" class="ligne-reponse" placeholder="Exemple 3 :">
+
+  <p class="consigne-label">➤ Consigne 3 : Quel est l'avantage principal du phygital pour le client ? Et pour le magasin ?</p>
+  <input type="text" class="ligne-reponse" placeholder="Pour le client :">
+  <input type="text" class="ligne-reponse" placeholder="Pour le magasin :">
+  <input type="text" class="ligne-reponse" placeholder="">
+
+  <div class="spacer"></div>
+
+  <!-- Activité 2 -->
+  <div class="activite-band act-violet">Activité 2 — Distinguer les solutions digitale et phygitale</div>
+
+  <p class="consigne">Consigne : Classez chaque solution dans la bonne colonne du tableau. Écrivez le nom ou la lettre de la solution dans la case correspondante.</p>
+
+  <div class="chips-container">
+    <span class="chip">A. Application mobile Casino Max</span>
+    <span class="chip">B. Livraison à domicile Cdiscount</span>
+    <span class="chip">C. Borne de scan autonome (Scan &amp; Go)</span>
+    <span class="chip">D. Click &amp; collect au supermarché</span>
+    <span class="chip">E. Commande en ligne sur Cdiscount.com</span>
+    <span class="chip">F. QR code en rayon</span>
+    <span class="chip">G. Miroir connecté en cabine d'essayage</span>
+    <span class="chip">H. Paiement sans contact en caisse</span>
+  </div>
+
+  <table class="classement-table">
+    <thead>
+      <tr>
+        <th class="th-virtuel">UC Virtuelle<br><span style="font-weight:400;font-size:10px;">(pure digital)</span></th>
+        <th class="th-phygital">UC Phygitale</th>
+        <th class="th-physique">UC Physique classique</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><textarea placeholder="Écrire les lettres ici…"></textarea></td>
+        <td><textarea placeholder="Écrire les lettres ici…"></textarea></td>
+        <td><textarea placeholder="Écrire les lettres ici…"></textarea></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="consigne-label">➤ La même enseigne peut-elle être à la fois physique ET phygitale ? Justifiez avec un exemple du groupe Casino.</p>
+  <input type="text" class="ligne-reponse" placeholder="Votre réponse…">
+  <input type="text" class="ligne-reponse" placeholder="">
+  <input type="text" class="ligne-reponse" placeholder="">
+
+  <div class="doc-footer">LEGER Isabelle — Les Unités Commerciales — 2de Bac Pro &nbsp;|&nbsp; Page 4</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 5 — SYNTHÈSE + MOT-LÉS
+     ══════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- SYNTHÈSE -->
+  <div class="section-header sh-dark">
+    <h2>SYNTHÈSE — Retenir l'essentiel</h2>
+    <div class="sh-sub">Les 3 types d'unités commerciales</div>
+  </div>
+
+  <table class="synthese-table">
+    <thead>
+      <tr>
+        <th style="width:130px;">Critères</th>
+        <th>UC Physique</th>
+        <th>UC Virtuelle (pure player)</th>
+        <th>UC Phygitale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Définition</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+      <tr>
+        <td><strong>Exemples Casino</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+      <tr>
+        <td><strong>Accès client</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+      <tr>
+        <td><strong>Avantages</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+      <tr>
+        <td><strong>Limites</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+      <tr>
+        <td><strong>Zone de chalandise</strong></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+        <td><input type="text" class="fill" placeholder="…"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="spacer-sm"></div>
+  <p class="consigne-label">➤ Complétez les phrases de synthèse :</p>
+
+  <div style="line-height:2.4; font-size:13px; margin: 8px 0;">
+    <p>Une unité commerciale est <input contenteditable="true" class="phrase-fill" style="min-width:200px;"> qui permet à un client d'accéder à une offre de produits ou de services.</p>
+    <p>Il existe 3 types d'UC : l'UC <input contenteditable="true" class="phrase-fill" style="min-width:110px;">, l'UC <input contenteditable="true" class="phrase-fill" style="min-width:110px;"> et l'UC <input contenteditable="true" class="phrase-fill" style="min-width:110px;">.</p>
+    <p>Cdiscount est un exemple de <input contenteditable="true" class="phrase-fill" style="min-width:130px;"> car il vend uniquement <input contenteditable="true" class="phrase-fill" style="min-width:130px;">.</p>
+    <p>Le phygital permet de combiner les avantages du commerce <input contenteditable="true" class="phrase-fill" style="min-width:110px;"> et du commerce <input contenteditable="true" class="phrase-fill" style="min-width:110px;">.</p>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- MOT-LÉS -->
+  <div class="section-header sh-teal">
+    <h2 style="color:white; font-family:'Sora',sans-serif; font-weight:800; font-size:18px;">MOT-LÉS — Mon vocabulaire de la séquence</h2>
+  </div>
+
+  <table class="motles-table">
+    <thead>
+      <tr>
+        <th>Terme</th>
+        <th>Définition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Unité commerciale (UC)</td><td>Lieu physique ou virtuel qui permet à un client d'accéder à une offre de produits ou de services.</td></tr>
+      <tr><td>UC physique</td><td>Unité commerciale qui existe dans un lieu géographique précis. Le client doit se déplacer pour effectuer ses achats. Ex : supermarché, boutique.</td></tr>
+      <tr><td>UC virtuelle</td><td>Unité commerciale qui existe uniquement sur internet. Le client commande en ligne sans se déplacer en magasin. Ex : Cdiscount, Amazon.</td></tr>
+      <tr><td>UC phygitale</td><td>Unité commerciale physique qui intègre des outils numériques (bornes, appli, QR codes) pour enrichir et personnaliser l'expérience client.</td></tr>
+      <tr><td>Pure player</td><td>Entreprise dont l'activité commerciale est réalisée exclusivement sur internet. Elle ne possède aucun magasin physique.</td></tr>
+      <tr><td>Facteur d'ambiance</td><td>Élément sensoriel (son, lumière, odeur, température, espace) utilisé dans un magasin pour créer une atmosphère favorable à l'achat.</td></tr>
+      <tr><td>Zone de chalandise</td><td>Zone géographique à partir de laquelle un point de vente attire l'essentiel de sa clientèle. Elle est limitée pour une UC physique, nationale pour un pure player.</td></tr>
+      <tr><td>Click &amp; collect</td><td>Service permettant au client de commander en ligne et de venir récupérer sa commande directement en magasin ou en drive, sans frais de livraison.</td></tr>
+      <tr><td>Dark store</td><td>Entrepôt urbain fermé au public, dédié à la préparation de commandes en ligne pour une livraison rapide (souvent en moins d'une heure).</td></tr>
+      <tr><td>Marketplace</td><td>Plateforme en ligne sur laquelle des vendeurs tiers peuvent proposer leurs produits aux côtés de ceux du site principal. Ex : marketplace de Cdiscount.</td></tr>
+      <tr><td>Scan &amp; Go</td><td>Solution phygitale permettant au client de scanner lui-même ses produits avec son smartphone ou une douchette en magasin, et de payer sans passer en caisse.</td></tr>
+      <tr><td>Merchandising</td><td>Ensemble des techniques de présentation et de mise en valeur des produits en magasin (emplacement en rayon, balisage, facing, PLV) pour favoriser les ventes.</td></tr>
+    </tbody>
+  </table>
+
+  <div style="text-align:center; margin-top:14px; font-size:12px; color:#888; font-style:italic;">
+    🎓 Bon courage ! Votre PFMP est une vraie chance de découvrir les coulisses du commerce.
+  </div>
+
+  <div class="doc-footer">LEGER Isabelle — Les Unités Commerciales — 2de Bac Pro &nbsp;|&nbsp; Page 5</div>
+</div>
+
+<script>
+  function scrollToPage(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Active nav highlight on scroll
+  const pages = [
+    { id: 'page-garde', btn: 0 },
+    { id: 'page-m1', btn: 1 },
+    { id: 'page-m2', btn: 2 },
+    { id: 'page-m3', btn: 3 },
+  ];
+  const navBtns = document.querySelectorAll('.nav-btn');
+
+  function updateActive() {
+    let current = 0;
+    pages.forEach((p, i) => {
+      const el = document.getElementById(p.id);
+      if (el && el.getBoundingClientRect().top <= 120) current = i;
+    });
+    navBtns.forEach((b, i) => b.classList.toggle('active', i === current));
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+</script>
+</body>
+</html>
